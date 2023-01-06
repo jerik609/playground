@@ -50,19 +50,22 @@ public class Join {
         System.out.println("--- " + LocalTime.now() + " ---");
         create(10)
                 .thenApply(x -> compute(x))
-                .thenCompose(x -> compute2(x))
-                .orTimeout(11, TimeUnit.SECONDS)
+                .thenApply(x -> compute(x))
+                //.thenCompose(x -> compute2(x))
+//                .orTimeout(11, TimeUnit.SECONDS)
                 .exceptionally(throwable -> {
                     System.out.println("UPPER EXCEPTIONALLY");
                     return -1;
                 })
                 .thenAccept(x -> System.out.println("intermediate: " + x))
-                .orTimeout(1, TimeUnit.SECONDS)
+                //.orTimeout(1, TimeUnit.SECONDS)
                 .exceptionally(th -> {
                     System.out.println("LOWER EXCEPTIONALLY");
                     return null;
-                });
-                //.join();
+                })
+                .thenAccept(x -> System.out.println("post action"))
+        ;
+        //        .join();
         System.out.println("--- " + LocalTime.now() + " ---");
 
         sleep(20000);
