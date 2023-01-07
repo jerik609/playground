@@ -28,5 +28,12 @@ public class FunctionalInterface {
         CustomFunInt<String, String, String> varX = String::concat;
 
         System.out.println(varX.computeStuff("a", "b"));
+
+        CustomFunInt.doNothingStatic();
+        varX.doNothingByDefault();
+
+        MightyTypeInference mighty = (a, b, c) -> a == b && a == c;
+        ThirdType third = (a, b, c) -> a.equals(b) && b.equals(c);
+
     }
 }
