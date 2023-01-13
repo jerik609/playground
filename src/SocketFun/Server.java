@@ -1,15 +1,17 @@
 package SocketFun;
 
-import javax.swing.text.StyledEditorKit;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
 
 public class Server {
 
     public static void main(String[] args) throws IOException {
+
+        // https://stackoverflow.com/questions/36388636/read-and-write-from-a-socket-simultaneously-in-rxjava
+        // let's use reactor in spring boot! (amigo to the rescue!)
+
         try (
                 final var serverSocket = new ServerSocket(34567);
                 final var executor = Executors.newVirtualThreadPerTaskExecutor();
