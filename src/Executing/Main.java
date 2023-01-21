@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) {
 
-        //ExecutorService executor = Executors.newSingleThreadExecutor();
-        ExecutorService executor = new ForkJoinPool();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        //ExecutorService executor = new ForkJoinPool();
 
         Runnable task = () -> {
             try {
