@@ -46,26 +46,36 @@ public class Main {
 
         final var keys3 = new String[]{"rocket", "itches"};
 
+        final var deleteKeys = new String[]{"rocket"};
+
         // iterator - searcher
 
+        JsonObject parentElement = valueBehindKey;
+        String elementKey = "";
         JsonElement element = valueBehindKey;
-        for (var key : keys3) {
+        for (var key : deleteKeys) {
             if (element instanceof JsonObject node) {
                 element = node.get(key);
                 if (element == null) {
                     System.out.println("Key is not one of node's children: Key '" + key + "' not found!");
                 }
+                parentElement = node;
+                elementKey = key;
             } else {
                 System.out.println("Trying to search past leaf: Key '" + key + "' not found!");
             }
         }
-        System.out.println(element);
+        System.out.println("parent: " + parentElement);
+        System.out.println("element: " + element);
 
 
+        System.out.println("Before delete: " + valueBehindKey);
 
+        parentElement.remove(elementKey);
 
+        System.out.println("After delete: " + valueBehindKey);
 
-
+        // and now we can persist
     }
 
 
