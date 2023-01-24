@@ -15,6 +15,7 @@ out/
 /intellij
 workspace.xml
 *.versionsBackup
+*.iml
 /idea/testData/debugger/tinyApp/classes*
 /jps-plugin/testData/kannotator
 /js/js.translator/testData/out/
