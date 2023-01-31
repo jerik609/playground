@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 public class Server {
 
@@ -14,7 +15,7 @@ public class Server {
 
         try (
                 final var serverSocket = new ServerSocket(34567);
-                final var executor = Executors.newVirtualThreadPerTaskExecutor();
+                final var executor = new ForkJoinPool();//Executors.newVirtualThreadPerTaskExecutor();
         ) {
             // connect a client
             while (true) {
