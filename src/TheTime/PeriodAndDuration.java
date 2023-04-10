@@ -70,8 +70,6 @@ public class PeriodAndDuration {
         } catch (UnsupportedTemporalTypeException e) {
             System.out.println("temporal exception");
         }
-
-        
     }
 
     private static void doDurations() {
